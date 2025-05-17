@@ -1,3 +1,0 @@
-C:/Users/Twitchy2654/Desktop/AudioBytes/Builds/AdroidOS/app/.cxx/Debug/5532b314/x86/CMakeFiles/audiobytes.dir
-C:/Users/Twitchy2654/Desktop/AudioBytes/Builds/AdroidOS/app/.cxx/Debug/5532b314/x86/CMakeFiles/edit_cache.dir
-C:/Users/Twitchy2654/Desktop/AudioBytes/Builds/AdroidOS/app/.cxx/Debug/5532b314/x86/CMakeFiles/rebuild_cache.dir
