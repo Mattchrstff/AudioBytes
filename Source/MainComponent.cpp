@@ -1,104 +1,108 @@
+// MainComponent.cpp
 #include "MainComponent.h"
 
-//==============================================================================
+// Constructor: Setup sliders, labels, audio channels
 MainComponent::MainComponent()
 {
-    // Make sure you set the size of the component after
-    // you add any child components.
-    setSize (800, 600);
+    // Configure gain slider
+    gainSlider.setRange(1.0, 20.0, 0.1); // Set range from 1.0 to 20.0
+    gainSlider.setValue(gain); // Initial value
+    gainSlider.onValueChange = [this] { gain = gainSlider.getValue(); }; // Update variable when slider changes
+    addAndMakeVisible(gainSlider); // Make slider visible
 
-    // Some platforms require permissions to open input channels so request that here
-    if (juce::RuntimePermissions::isRequired (juce::RuntimePermissions::recordAudio)
-        && ! juce::RuntimePermissions::isGranted (juce::RuntimePermissions::recordAudio))
-    {
-        juce::RuntimePermissions::request (juce::RuntimePermissions::recordAudio,
-                                           [&] (bool granted) { setAudioChannels (granted ? 2 : 0, 2); });
-    }
-    else
-    {
-        // Specify the number of input and output channels that we want to open
-        setAudioChannels (2, 2);
-    }
-    
-    levelSlider.setRange(0.0, 0.25);
-    levelSlider.setTextBoxStyle (juce::Slider::TextBoxRight, false, 100, 20);
-    levelLable.setText ("Noise level kill me", juce::dontSendNotification);
-    
-    addAndMakeVisible(levelSlider);
-    addAndMakeVisible(levelLable);
-    
+    gainLabel.setText("Gain", juce::dontSendNotification); // Set label text
+    addAndMakeVisible(gainLabel); // Make label visible
+
+    // Configure tone slider
+    toneSlider.setRange(500.0, 20000.0, 1.0); // Hz range
+    toneSlider.setValue(tone);
+    toneSlider.onValueChange = [this] { tone = toneSlider.getValue(); };
+    addAndMakeVisible(toneSlider);
+
+    toneLabel.setText("Tone", juce::dontSendNotification);
+    addAndMakeVisible(toneLabel);
+
+    // Configure volume slider
+    volumeSlider.setRange(0.0, 1.0, 0.01); // Volume from 0 to 1
+    volumeSlider.setValue(volume);
+    volumeSlider.onValueChange = [this] { volume = volumeSlider.getValue(); };
+    addAndMakeVisible(volumeSlider);
+
+    volumeLabel.setText("Volume", juce::dontSendNotification);
+    addAndMakeVisible(volumeLabel);
+
+    setSize (400, 200); // Set window size
+    setAudioChannels (1, 2); // One input (mono), two outputs (stereo)
 }
 
+// Destructor: clean up audio
 MainComponent::~MainComponent()
 {
-    // This shuts down the audio device and clears the audio source.
-    shutdownAudio();
+    shutdownAudio(); // Free audio resources
 }
 
-//==============================================================================
+// Prepare filter and allocate resources
 void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
-    // This function will be called when the audio device is started, or when
-    // its settings (i.e. sample rate, block size, etc) are changed.
+    juce::dsp::ProcessSpec spec;
+    spec.sampleRate = sampleRate; // Set sample rate for filter
+    spec.maximumBlockSize = static_cast<juce::uint32> (samplesPerBlockExpected); // Set block size
+    spec.numChannels = 1; // Mono filter
 
-    // You can use this function to initialise any resources you might need,
-    // but be careful - it will be called on the audio thread, not the GUI thread.
-
-    // For more details, see the help for AudioProcessor::prepareToPlay()
-    
+    toneFilter.prepare(spec); // Initialize the filter with this spec
 }
 
+// Called when audio stops
+void MainComponent::releaseResources()
+{
+    // Nothing to release in this simple example
+}
+
+// Audio processing loop
 void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
 {
-    // Your audio-processing code goes here!
+    // Get input buffer (mic input assumed to be mono)
+    auto* input = bufferToFill.buffer->getReadPointer(0);
+    // Get output buffers for left/right
+    auto* left = bufferToFill.buffer->getWritePointer(0);
+    auto* right = bufferToFill.buffer->getNumChannels() > 1 ? bufferToFill.buffer->getWritePointer(1) : nullptr;
 
-    // For more details, see the help for AudioProcessor::getNextAudioBlock()
+    // Update filter coefficients based on tone slider
+    auto coeffs = juce::dsp::IIR::Coefficients<float>::makeLowPass(getSampleRate(), tone);
+    *toneFilter.state = *coeffs;
 
-    // Right now we are not producing any data, in which case we need to clear the buffer
-    // (to prevent the output of random noise)
-    bufferToFill.clearActiveBufferRegion();
-    
-    auto level = (float) levelSlider.getValue();
-    
-    for (auto channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
+    // Process each audio sample
+    for (int i = 0; i < bufferToFill.numSamples; ++i)
     {
-        auto* buffer = bufferToFill.buffer->getWritePointer (channel, bufferToFill.startSample);
-        for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
-        {
-            auto noise = random.nextFloat() * 2.0f - 1.0f;
-            buffer[sample] = noise * level;
-        }
+        float dry = input[i]; // Read input sample
+        float boosted = dry * gain; // Apply gain
+        float clipped = std::clamp(boosted, -0.8f, 0.8f); // Hard clipping
+        float filtered = toneFilter.state->processSample(clipped); // Apply tone filter
+        float output = filtered * volume; // Apply volume
+
+        left[i] = output; // Write to left output
+        if (right) right[i] = output; // Write to right output
     }
 }
 
-void MainComponent::releaseResources()
-{
-    // This will be called when the audio device stops, or when it is being
-    // restarted due to a setting change.
-
-    // For more details, see the help for AudioProcessor::releaseResources()
-}
-
-//==============================================================================
+// Fill the background
 void MainComponent::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    // You can add your drawing code here!
+    g.fillAll (juce::Colours::black); // Black background
 }
 
+// Position sliders and labels
 void MainComponent::resized()
 {
-    // This is called when the MainContentComponent is resized.
-    // If you add any child components, this is where you should
-    // update their positions.
-    levelLable.setBounds(10, 10, 90, 20);
-    levelSlider.setBounds(100, 10, getWidth() - 110, 20);
-}
+    auto area = getLocalBounds().reduced(10); // Padding
+    auto rowHeight = 40;
 
-void MainComponent::updateAngleDelta()
-{
-    //auto cyclesPerSample = frequencySlider.getValue() / currentSampleRate;
-    //angleDelta = cyclesPerSample * 2.0 * juce::MathConstants<double>::pi;
+    gainLabel.setBounds(area.removeFromTop(20));
+    gainSlider.setBounds(area.removeFromTop(rowHeight));
+
+    toneLabel.setBounds(area.removeFromTop(20));
+    toneSlider.setBounds(area.removeFromTop(rowHeight));
+
+    volumeLabel.setBounds(area.removeFromTop(20));
+    volumeSlider.setBounds(area.removeFromTop(rowHeight));
 }
