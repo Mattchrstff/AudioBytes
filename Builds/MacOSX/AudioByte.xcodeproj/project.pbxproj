@@ -39,7 +39,6 @@
 		ABE24E43CFDDE329F883D461 /* include_juce_analytics.cpp */ = {isa = PBXBuildFile; fileRef = 6DBD8FE3397CFD96DACBC4F3; };
 		AC6431674EA36AEA613014A5 /* include_juce_cryptography.mm */ = {isa = PBXBuildFile; fileRef = 40826366A4ED787DE48DBB23; };
 		ADB84D2BAD0CAA01D6C809D7 /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXBuildFile; fileRef = B6D6494AE81A037E09B0C45E; };
-		B9A975D3FF50DD06A9F9DBDD /* include_juce_midi_ci.cpp */ = {isa = PBXBuildFile; fileRef = 5794764D3FC1133CF5703514; };
 		BBC0C6FBFEA2438EAF76E2B9 /* CoreMIDI.framework */ = {isa = PBXBuildFile; fileRef = 8AA6902FB19D0685345C470C; };
 		CF3A066056FDDA656486CEDC /* DiscRecording.framework */ = {isa = PBXBuildFile; fileRef = A17F72C81D8A6E788369D787; };
 		D18189A3350A6AA2C1F190CD /* RecentFilesMenuTemplate.nib */ = {isa = PBXBuildFile; fileRef = 78CF0EC810B61DB83B2210AD; };
@@ -70,7 +69,6 @@
 		1E79B04D5CE9CEB00DED1BE2 /* JuceHeader.h */ /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		1ED3F26042A3970CFD0A02FC /* juce_opengl */ /* juce_opengl */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_opengl; path = /Users/devinharrison/Documents/Hackathon2025/JUCE/modules/juce_opengl; sourceTree = "<absolute>"; };
 		20C3B986B87FCC69EABEF750 /* juce_events */ /* juce_events */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_events; path = /Users/devinharrison/Documents/Hackathon2025/JUCE/modules/juce_events; sourceTree = "<absolute>"; };
-		2538E349DE1DAFEFABC707AB /* juce_midi_ci */ /* juce_midi_ci */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_midi_ci; path = /Users/devinharrison/Documents/Hackathon2025/JUCE/modules/juce_midi_ci; sourceTree = "<absolute>"; };
 		267917EE0DB27F52FECA7CA1 /* AVFoundation.framework */ /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2746D19A68446D55352A9803 /* juce_video */ /* juce_video */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_video; path = /Users/devinharrison/Documents/Hackathon2025/JUCE/modules/juce_video; sourceTree = "<absolute>"; };
 		2B6DDA46E8BDF97A90FC7F3E /* AVKit.framework */ /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -84,7 +82,6 @@
 		4987B1CF8AF5CEDB554EFE83 /* include_juce_graphics_Sheenbidi.c */ /* include_juce_graphics_Sheenbidi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = include_juce_graphics_Sheenbidi.c; path = ../../JuceLibraryCode/include_juce_graphics_Sheenbidi.c; sourceTree = SOURCE_ROOT; };
 		4E720DD7F5D043C52F6680DE /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
 		55209E5E6E9980C5DAF6FD45 /* include_juce_audio_formats.mm */ /* include_juce_audio_formats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_formats.mm; path = ../../JuceLibraryCode/include_juce_audio_formats.mm; sourceTree = SOURCE_ROOT; };
-		5794764D3FC1133CF5703514 /* include_juce_midi_ci.cpp */ /* include_juce_midi_ci.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_midi_ci.cpp; path = ../../JuceLibraryCode/include_juce_midi_ci.cpp; sourceTree = SOURCE_ROOT; };
 		5C3EBC4879518C1C4C9528C3 /* WebKit.framework */ /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5FFB44FB522D9F336D73E218 /* juce_audio_plugin_client */ /* juce_audio_plugin_client */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_plugin_client; path = /Users/devinharrison/Documents/Hackathon2025/JUCE/modules/juce_audio_plugin_client; sourceTree = "<absolute>"; };
 		64D26D9F981CE1726FBFC0BC /* include_juce_gui_extra.mm */ /* include_juce_gui_extra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_extra.mm; path = ../../JuceLibraryCode/include_juce_gui_extra.mm; sourceTree = SOURCE_ROOT; };
@@ -235,7 +232,6 @@
 				9B6DDE61E02BEC10DAC6FA49,
 				6CB9EA1270495E8FD54F08AB,
 				C6C4E49DD6994EF0063F6EB8,
-				2538E349DE1DAFEFABC707AB,
 				1ED3F26042A3970CFD0A02FC,
 				87C90364D6A1B7D61A16F4A8,
 				FB592504CBE7760954EAEE9F,
@@ -296,7 +292,6 @@
 				E41A7CAE309A03FA0EECB331,
 				64D26D9F981CE1726FBFC0BC,
 				02A0088AE731DDF59A4ECA89,
-				5794764D3FC1133CF5703514,
 				6D9319026D2216165A44CE1A,
 				12A16219A71DFAA873DAD611,
 				A2B950110199EF80E2D2E0CC,
@@ -417,7 +412,6 @@
 				EFCCB9E69946717EE3B79D64,
 				3708DD63439C86BCBD11F178,
 				69A976337974359DC364C969,
-				B9A975D3FF50DD06A9F9DBDD,
 				A01A940818BD76E3DEF32767,
 				E8A6C34C1BFF78276A2E3D86,
 				5B87320A990A4ABA0D7DFBC0,
@@ -462,7 +456,6 @@
 					"JUCE_MODULE_AVAILABLE_juce_gui_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_gui_extra=1",
 					"JUCE_MODULE_AVAILABLE_juce_javascript=1",
-					"JUCE_MODULE_AVAILABLE_juce_midi_ci=1",
 					"JUCE_MODULE_AVAILABLE_juce_opengl=1",
 					"JUCE_MODULE_AVAILABLE_juce_osc=1",
 					"JUCE_MODULE_AVAILABLE_juce_product_unlocking=1",
@@ -585,7 +578,6 @@
 					"JUCE_MODULE_AVAILABLE_juce_gui_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_gui_extra=1",
 					"JUCE_MODULE_AVAILABLE_juce_javascript=1",
-					"JUCE_MODULE_AVAILABLE_juce_midi_ci=1",
 					"JUCE_MODULE_AVAILABLE_juce_opengl=1",
 					"JUCE_MODULE_AVAILABLE_juce_osc=1",
 					"JUCE_MODULE_AVAILABLE_juce_product_unlocking=1",

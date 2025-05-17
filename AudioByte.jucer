@@ -30,7 +30,6 @@
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_javascript" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_midi_ci" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_product_unlocking" showAllCode="1" useLocalCopy="0"
@@ -63,7 +62,6 @@
         <MODULEPATH id="juce_animation" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_javascript" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_midi_ci" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_product_unlocking" path="../../JUCE/modules"/>
@@ -94,7 +92,6 @@
         <MODULEPATH id="juce_animation" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_javascript" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_midi_ci" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_product_unlocking" path="../../JUCE/modules"/>
@@ -125,7 +122,6 @@
         <MODULEPATH id="juce_animation" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_javascript" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_midi_ci" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_product_unlocking" path="../../JUCE/modules"/>

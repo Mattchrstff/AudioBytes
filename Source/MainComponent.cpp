@@ -77,8 +77,8 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         float dry = input[i]; // Read input sample
         float boosted = dry * gain; // Apply gain
         float clipped = std::clamp(boosted, -0.8f, 0.8f); // Hard clipping
-        float filtered = toneFilter.state->processSample(clipped); // Apply tone filter
-        float output = filtered * volume; // Apply volume
+        float filtered = toneFilter.state->; // Apply tone filter
+        float output = clipped * volume; // Apply volume
 
         left[i] = output; // Write to left output
         if (right) right[i] = output; // Write to right output
