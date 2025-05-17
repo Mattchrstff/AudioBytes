@@ -38,6 +38,7 @@ private:
 //        juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> toneFilter;
         juce::dsp::IIR::Filter<float> toneFilter;
         juce::Reverb reverbFilter;
+        juce::Reverb::Parameters reverbParams;
     
         
 
