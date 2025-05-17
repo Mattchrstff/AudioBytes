@@ -12,6 +12,7 @@ class MainComponent  : public juce::AudioAppComponent
 public:
     //==============================================================================
     MainComponent();
+
     ~MainComponent() override;
 
     //==============================================================================
@@ -22,10 +23,15 @@ public:
     //==============================================================================
     void paint (juce::Graphics& g) override;
     void resized() override;
+    void updateAngleDelta();
 
 private:
     //==============================================================================
     // Your private member variables go here...
+    double currentSampleRate = 0.0, currentAngle = 0.0, angleDelta = 0.0;
+    juce::Random random;
+    juce::Slider levelSlider;
+    juce::Label levelLable;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
