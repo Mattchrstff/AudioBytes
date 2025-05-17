@@ -55,6 +55,9 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
     spec.numChannels = 1; // Mono filter
 
     toneFilter.prepare(spec); // Initialize the filter with this spec
+    
+    
+    reverbFilter.setSampleRate(tone);
 }
 
 // Called when audio stops
@@ -81,10 +84,11 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
     // Process each audio sample
     for (int i = 0; i < bufferToFill.numSamples; ++i)
     {
+        reverbFilter.processMono(left, bufferToFill.numSamples);
         float dry = input[i]; // Read input sample
         float boosted = dry * gain; // Apply gain
         float clipped = std::clamp(boosted, -0.8f, 0.8f); // Hard clipping
-        float filtered = toneFilter.processSample(clipped); // Apply tone filter
+        // Apply tone filter
         float output = clipped * volume; // Apply volume
 
         left[i] = output; // Write to left output
