@@ -35,8 +35,10 @@ private:
         float volume = 0.8f;
 
         // Filter
-        juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>,
-                                       juce::dsp::IIR::Coefficients<float>> toneFilter;
+//        juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> toneFilter;
+        juce::dsp::IIR::Filter<float> toneFilter;
+    
+        
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
