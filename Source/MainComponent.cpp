@@ -30,6 +30,11 @@ MainComponent::MainComponent()
 
     volumeLabel.setText("Volume", juce::dontSendNotification);
     addAndMakeVisible(volumeLabel);
+    
+    juce::AudioDeviceManager::AudioDeviceSetup currentAudioSetup;
+    deviceManager.getAudioDeviceSetup (currentAudioSetup);
+    currentAudioSetup.bufferSize = 100;
+    deviceManager.setAudioDeviceSetup (currentAudioSetup, true);
 
     setSize (400, 200); // Set window size
     setAudioChannels (1, 2); // One input (mono), two outputs (stereo)
