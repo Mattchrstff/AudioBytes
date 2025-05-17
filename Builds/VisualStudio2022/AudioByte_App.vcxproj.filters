@@ -161,12 +161,6 @@
     <Filter Include="JUCE Modules\juce_audio_formats">
       <UniqueIdentifier>{E824435F-FC7B-10BE-5D1A-5DACC51A8836}</UniqueIdentifier>
     </Filter>
-    <Filter Include="JUCE Modules\juce_audio_plugin_client\detail">
-      <UniqueIdentifier>{50461EB0-68B5-5582-2DE2-81B0FE171231}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="JUCE Modules\juce_audio_plugin_client">
-      <UniqueIdentifier>{BA0A76FA-458F-0B1C-02E9-ECFBF81140EC}</UniqueIdentifier>
-    </Filter>
     <Filter Include="JUCE Modules\juce_audio_processors\format">
       <UniqueIdentifier>{86737735-F6BA-F64A-5EC7-5C9F36755F79}</UniqueIdentifier>
     </Filter>
@@ -772,6 +766,15 @@
     </Filter>
     <Filter Include="JUCE Modules\juce_javascript">
       <UniqueIdentifier>{08279B14-88F5-FDFE-A7A2-2F7485A424DB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_midi_ci\ci">
+      <UniqueIdentifier>{EC0A49B5-F336-1F4D-6C32-40E19BE1426F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_midi_ci\detail">
+      <UniqueIdentifier>{39CDBE58-7B8F-B367-DAE9-BCA326A4C637}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_midi_ci">
+      <UniqueIdentifier>{F64F0BED-92DA-A4AE-0A76-9AC4FC01C199}</UniqueIdentifier>
     </Filter>
     <Filter Include="JUCE Modules\juce_opengl\geometry">
       <UniqueIdentifier>{1A9221A3-E993-70B2-6EA2-8E1DB5FF646A}</UniqueIdentifier>
@@ -1452,9 +1455,6 @@
     </ClCompile>
     <ClCompile Include="C:\JUCE\modules\juce_audio_formats\juce_audio_formats.mm">
       <Filter>JUCE Modules\juce_audio_formats</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_ARA.cpp">
-      <Filter>JUCE Modules\juce_audio_plugin_client</Filter>
     </ClCompile>
     <ClCompile Include="C:\JUCE\modules\juce_audio_processors\format\juce_AudioPluginFormat.cpp">
       <Filter>JUCE Modules\juce_audio_processors\format</Filter>
@@ -3955,6 +3955,45 @@
     <ClCompile Include="C:\JUCE\modules\juce_javascript\juce_javascript.cpp">
       <Filter>JUCE Modules\juce_javascript</Filter>
     </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIDevice.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIEncodings.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIParser.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIProfileHost.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIProfileStates.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIPropertyDelegate.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIPropertyExchangeCache.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIPropertyHost.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIResponderOutput.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CISubscriptionManager.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\detail\juce_CIPropertyDataMessageChunker.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\detail\juce_CIResponder.cpp">
+      <Filter>JUCE Modules\juce_midi_ci\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\JUCE\modules\juce_midi_ci\juce_midi_ci.cpp">
+      <Filter>JUCE Modules\juce_midi_ci</Filter>
+    </ClCompile>
     <ClCompile Include="C:\JUCE\modules\juce_opengl\opengl\juce_gl.cpp">
       <Filter>JUCE Modules\juce_opengl\opengl</Filter>
     </ClCompile>
@@ -4072,9 +4111,6 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_formats.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_plugin_client_ARA.cpp">
-      <Filter>JUCE Library Code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_processors.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
@@ -4124,6 +4160,9 @@
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_javascript.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\include_juce_midi_ci.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_opengl.cpp">
@@ -4931,30 +4970,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_formats\juce_audio_formats.h">
       <Filter>JUCE Modules\juce_audio_formats</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_CheckSettingMacros.h">
-      <Filter>JUCE Modules\juce_audio_plugin_client\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_CreatePluginFilter.h">
-      <Filter>JUCE Modules\juce_audio_plugin_client\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_IncludeModuleHeaders.h">
-      <Filter>JUCE Modules\juce_audio_plugin_client\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_IncludeSystemHeaders.h">
-      <Filter>JUCE Modules\juce_audio_plugin_client\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_LinuxMessageThread.h">
-      <Filter>JUCE Modules\juce_audio_plugin_client\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_PluginUtilities.h">
-      <Filter>JUCE Modules\juce_audio_plugin_client\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\JUCE\modules\juce_audio_plugin_client\detail\juce_VSTWindowUtilities.h">
-      <Filter>JUCE Modules\juce_audio_plugin_client\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client.h">
-      <Filter>JUCE Modules\juce_audio_plugin_client</Filter>
     </ClInclude>
     <ClInclude Include="C:\JUCE\modules\juce_audio_processors\format\juce_AudioPluginFormat.h">
       <Filter>JUCE Modules\juce_audio_processors\format</Filter>
@@ -8432,6 +8447,102 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_javascript\juce_javascript.h">
       <Filter>JUCE Modules\juce_javascript</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIChannelAddress.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIDevice.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIDeviceFeatures.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIDeviceListener.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIDeviceMessageHandler.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIDeviceOptions.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIEncoding.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIEncodings.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIFunctionBlock.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIMessages.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIMuid.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIParser.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIProfileAtAddress.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIProfileDelegate.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIProfileHost.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIProfileStates.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIPropertyDelegate.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIPropertyExchangeCache.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIPropertyExchangeResult.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIPropertyHost.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIResponderDelegate.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CIResponderOutput.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CISubscription.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CISubscriptionManager.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\ci\juce_CISupportedAndActive.h">
+      <Filter>JUCE Modules\juce_midi_ci\ci</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\detail\juce_CIMarshalling.h">
+      <Filter>JUCE Modules\juce_midi_ci\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\detail\juce_CIMessageMeta.h">
+      <Filter>JUCE Modules\juce_midi_ci\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\detail\juce_CIMessageTypeUtils.h">
+      <Filter>JUCE Modules\juce_midi_ci\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\detail\juce_CIPropertyDataMessageChunker.h">
+      <Filter>JUCE Modules\juce_midi_ci\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\detail\juce_CIPropertyHostUtils.h">
+      <Filter>JUCE Modules\juce_midi_ci\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\JUCE\modules\juce_midi_ci\detail\juce_CIResponder.h">
+      <Filter>JUCE Modules\juce_midi_ci\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_midi_ci\juce_midi_ci.h">
+      <Filter>JUCE Modules\juce_midi_ci</Filter>
     </ClInclude>
     <ClInclude Include="C:\JUCE\modules\juce_opengl\geometry\juce_Draggable3DOrientation.h">
       <Filter>JUCE Modules\juce_opengl\geometry</Filter>

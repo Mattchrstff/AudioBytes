@@ -68,7 +68,7 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
     auto* right = bufferToFill.buffer->getNumChannels() > 1 ? bufferToFill.buffer->getWritePointer(1) : nullptr;
 
     // Update filter coefficients based on tone slider
-    auto coeffs = juce::dsp::IIR::Coefficients<float>::makeLowPass(getSampleRate(), tone);
+    auto coeffs = juce::dsp::IIR::Coefficients<float>::makeLowPass(44100, tone);
     *toneFilter.state = *coeffs;
 
     // Process each audio sample
@@ -77,7 +77,7 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         float dry = input[i]; // Read input sample
         float boosted = dry * gain; // Apply gain
         float clipped = std::clamp(boosted, -0.8f, 0.8f); // Hard clipping
-        float filtered = toneFilter.state->; // Apply tone filter
+       // float filtered = toneFilter.state->getFilterOrder(); // Apply tone filter
         float output = clipped * volume; // Apply volume
 
         left[i] = output; // Write to left output

@@ -5,4 +5,4 @@
 
 */
 
-#include <juce_audio_plugin_client/juce_audio_plugin_client_AU_1.mm>
+#include <juce_midi_ci/juce_midi_ci.cpp>

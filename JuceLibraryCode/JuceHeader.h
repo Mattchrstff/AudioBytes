@@ -18,7 +18,6 @@
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_devices/juce_audio_devices.h>
 #include <juce_audio_formats/juce_audio_formats.h>
-#include <juce_audio_plugin_client/juce_audio_plugin_client.h>
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_audio_utils/juce_audio_utils.h>
 #include <juce_box2d/juce_box2d.h>
@@ -31,6 +30,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_gui_extra/juce_gui_extra.h>
 #include <juce_javascript/juce_javascript.h>
+#include <juce_midi_ci/juce_midi_ci.h>
 #include <juce_opengl/juce_opengl.h>
 #include <juce_osc/juce_osc.h>
 #include <juce_product_unlocking/juce_product_unlocking.h>

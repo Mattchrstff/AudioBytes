@@ -26,21 +26,17 @@ public:
     void updateAngleDelta();
 
 private:
-    //==============================================================================
-    // Your private member variables go here...
     // UI
-    juce::Slider gainSlider, toneSlider, volumeSlider;
-    juce::Label gainLabel, toneLabel, volumeLabel;
+        juce::Slider gainSlider, toneSlider, volumeSlider;
+        juce::Label gainLabel, toneLabel, volumeLabel;
 
-    float gain = 5.0f;
-    float tone = 8000.0f;
-    float volume = 0.8f;
+        float gain = 5.0f;
+        float tone = 8000.0f;
+        float volume = 0.8f;
 
-    // Filter
-    juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>,
-                                   juce::dsp::IIR::Coefficients<float>> toneFilter;
+        // Filter
+        juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>,
+                                       juce::dsp::IIR::Coefficients<float>> toneFilter;
 
-
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
