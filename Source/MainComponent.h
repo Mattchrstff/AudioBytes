@@ -33,7 +33,7 @@ private:
         juce::dsp::ProcessSpec spec;
 
         float gain = 5.0f;
-        float tone = 8000.0f;
+        float tone = 0.0f;
         float volume = 0.8f;
         float delay = 0.0f;
 
