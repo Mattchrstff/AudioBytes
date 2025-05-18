@@ -45,7 +45,7 @@ MainComponent::MainComponent()
     
     juce::AudioDeviceManager::AudioDeviceSetup currentAudioSetup;
     deviceManager.getAudioDeviceSetup (currentAudioSetup);
-    currentAudioSetup.bufferSize = 100;
+    currentAudioSetup.bufferSize = 600;
     deviceManager.setAudioDeviceSetup (currentAudioSetup, true);
 
     setSize (400, 300); // Set window size
@@ -105,10 +105,10 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         float dry = input[i]; // Read input sample
         float boosted = dry * gain; // Apply gain
         float clipped = std::clamp(boosted, -0.8f, 0.8f); // Hard clipping
-        delayFilter.pushSample(0, delay);
-        float delayed = clipped + delayFilter.popSample(0);
-        float output = delayed * volume; // Apply volume
         
+        float delayed = delayFilter.popSample(0, delay);
+        delayFilter.pushSample(0, delayed + clipped);
+        float output = (delayed + clipped) * volume; // Apply volume
 
         left[i] = output; // Write to left output
         
