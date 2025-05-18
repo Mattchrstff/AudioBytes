@@ -85,7 +85,7 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
 
     
     *toneFilter.coefficients = *coeffs;
-    reverbFilter.processMono(left, bufferToFill.numSamples);
+    
     // Process each audio sample
     for (int i = 0; i < bufferToFill.numSamples; ++i)
     {
@@ -99,6 +99,10 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         
         if (right) right[i] = output; // Write to right output
     }
+    if (!right)
+        reverbFilter.processMono(left, bufferToFill.numSamples);
+    else
+        reverbFilter.processStereo(left, right, bufferToFill.numSamples);
     
 }
 
