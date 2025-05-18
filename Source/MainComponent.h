@@ -27,18 +27,23 @@ public:
 
 private:
     // UI
-        juce::Slider gainSlider, toneSlider, volumeSlider;
-        juce::Label gainLabel, toneLabel, volumeLabel;
+        juce::Slider gainSlider, toneSlider, volumeSlider, delaySlider;
+        juce::Label gainLabel, toneLabel, volumeLabel, delayLabel;
+    
+        juce::dsp::ProcessSpec spec;
 
         float gain = 5.0f;
         float tone = 8000.0f;
         float volume = 0.8f;
+        float delay = 0.0f;
 
         // Filter
 //        juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> toneFilter;
         juce::dsp::IIR::Filter<float> toneFilter;
         juce::Reverb reverbFilter;
         juce::Reverb::Parameters reverbParams;
+    
+        juce::dsp::DelayLine<float, juce::dsp::DelayLineInterpolationTypes::Linear> delayFilter{44100};
     
         
 
