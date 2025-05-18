@@ -17,7 +17,9 @@ MainComponent::MainComponent()
     toneSlider.setRange(0, 1.0, 0.01); // Hz range
     toneSlider.setValue(tone);
     toneSlider.onValueChange = [this] {
-        reverbParams.roomSize = toneSlider.getValue();
+        tone = toneSlider.getValue();
+        reverbParams.roomSize = tone;
+        reverbParams.damping = tone;
         reverbFilter.setParameters(reverbParams);
         reverbFilter.reset();};
     addAndMakeVisible(toneSlider);
@@ -26,9 +28,14 @@ MainComponent::MainComponent()
     addAndMakeVisible(toneLabel);
     
     // Configure delay slider
-    delaySlider.setRange(0.0, 500.0, 1); // Set range from 1.0 to 20.0
+    delaySlider.setRange(4000, 40000, 10); // Set range from 1.0 to 20.0
     delaySlider.setValue(delay); // Initial value
-    delaySlider.onValueChange = [this] { delay = delaySlider.getValue(); }; // Update variable when slider changes
+    delaySlider.onValueChange = [this] 
+        { 
+            delay = delaySlider.getValue();
+            spec.sampleRate = delay;
+            delayFilter.prepare(spec);
+        }; // Update variable when slider changes
     addAndMakeVisible(delaySlider); // Make slider visible
 
     delayLabel.setText("Delay", juce::dontSendNotification); // Set label text
@@ -45,7 +52,7 @@ MainComponent::MainComponent()
     
     juce::AudioDeviceManager::AudioDeviceSetup currentAudioSetup;
     deviceManager.getAudioDeviceSetup (currentAudioSetup);
-    currentAudioSetup.bufferSize = 600;
+    currentAudioSetup.bufferSize = 50;
     deviceManager.setAudioDeviceSetup (currentAudioSetup, true);
 
     setSize (400, 300); // Set window size
@@ -61,18 +68,18 @@ MainComponent::~MainComponent()
 // Prepare filter and allocate resources
 void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
-    spec.sampleRate = sampleRate; // Set sample rate for filter
+    spec.sampleRate = 44100; // Set sample rate for filter
     spec.maximumBlockSize = samplesPerBlockExpected; // Set block size
     spec.numChannels = 1; // Mono filter
 
-    delayFilter.reset();
+  /*  delayFilter.reset();*/
     delayFilter.prepare(spec);// Initialize the filter with this spec
     
     reverbFilter.setSampleRate(44100);
-    reverbParams.dryLevel = 1.0;
-    reverbParams.wetLevel = 1.0;
-    reverbParams.roomSize = 1.0;
-    reverbParams.damping = 0.1;
+    reverbParams.dryLevel = 0.5;
+    reverbParams.wetLevel = 0.5;
+    reverbParams.roomSize = 0;
+    reverbParams.damping = 0.4;
     
     reverbFilter.setParameters(reverbParams);
     
@@ -107,7 +114,7 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         float clipped = std::clamp(boosted, -0.8f, 0.8f); // Hard clipping
         
         float delayed = delayFilter.popSample(0, delay);
-        delayFilter.pushSample(0, delayed + clipped);
+        delayFilter.pushSample(0, (delayed + clipped)/2);
         float output = (delayed + clipped) * volume; // Apply volume
 
         left[i] = output; // Write to left output
