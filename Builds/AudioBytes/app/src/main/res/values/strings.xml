@@ -1,3 +1,5 @@
+
 <resources>
-    <string name="app_name">AudioBytesAdroid</string>
+<string name="app_name">AudioBytes</string>
+<string name="hello_text">Hello</string>
 </resources>
