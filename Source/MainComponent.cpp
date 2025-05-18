@@ -48,7 +48,7 @@ MainComponent::MainComponent()
     currentAudioSetup.bufferSize = 100;
     deviceManager.setAudioDeviceSetup (currentAudioSetup, true);
 
-    setSize (400, 200); // Set window size
+    setSize (400, 300); // Set window size
     setAudioChannels (1, 2); // One input (mono), two outputs (stereo)
 }
 
@@ -106,7 +106,7 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         float boosted = dry * gain; // Apply gain
         float clipped = std::clamp(boosted, -0.8f, 0.8f); // Hard clipping
         delayFilter.pushSample(0, delay);
-        float delayed = delayFilter.popSample(0);
+        float delayed = clipped + delayFilter.popSample(0);
         float output = delayed * volume; // Apply volume
         
 
@@ -138,6 +138,9 @@ void MainComponent::resized()
 
     toneLabel.setBounds(area.removeFromTop(20));
     toneSlider.setBounds(area.removeFromTop(rowHeight));
+    
+    delayLabel.setBounds(area.removeFromTop(20));
+    delaySlider.setBounds(area.removeFromTop(rowHeight));
 
     volumeLabel.setBounds(area.removeFromTop(20));
     volumeSlider.setBounds(area.removeFromTop(rowHeight));
