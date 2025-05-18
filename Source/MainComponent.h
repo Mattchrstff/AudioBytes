@@ -43,7 +43,7 @@ private:
         juce::Reverb reverbFilter;
         juce::Reverb::Parameters reverbParams;
     
-        juce::dsp::DelayLine<float, juce::dsp::DelayLineInterpolationTypes::Linear> delayFilter{44100};
+        juce::dsp::DelayLine<float> delayFilter{44100};
     
         
 
