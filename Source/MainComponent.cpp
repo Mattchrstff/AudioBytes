@@ -16,11 +16,23 @@ MainComponent::MainComponent()
     // Configure tone slider
     toneSlider.setRange(0, 1.0, 0.01); // Hz range
     toneSlider.setValue(tone);
-    toneSlider.onValueChange = [this] { reverbParams.roomSize = toneSlider.getValue(); };
+    toneSlider.onValueChange = [this] {
+        reverbParams.roomSize = toneSlider.getValue();
+        reverbFilter.setParameters(reverbParams);
+        reverbFilter.reset();};
     addAndMakeVisible(toneSlider);
 
     toneLabel.setText("Reverb", juce::dontSendNotification);
     addAndMakeVisible(toneLabel);
+    
+    // Configure delay slider
+    delaySlider.setRange(0.0, 500.0, 1); // Set range from 1.0 to 20.0
+    delaySlider.setValue(delay); // Initial value
+    delaySlider.onValueChange = [this] { delay = delaySlider.getValue(); }; // Update variable when slider changes
+    addAndMakeVisible(delaySlider); // Make slider visible
+
+    delayLabel.setText("Delay", juce::dontSendNotification); // Set label text
+    addAndMakeVisible(delayLabel); // Make label visible
 
     // Configure volume slider
     volumeSlider.setRange(0.0, 1.0, 0.01); // Volume from 0 to 1
@@ -49,12 +61,12 @@ MainComponent::~MainComponent()
 // Prepare filter and allocate resources
 void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
-    juce::dsp::ProcessSpec spec;
     spec.sampleRate = sampleRate; // Set sample rate for filter
-    spec.maximumBlockSize = static_cast<juce::uint32> (samplesPerBlockExpected); // Set block size
+    spec.maximumBlockSize = samplesPerBlockExpected; // Set block size
     spec.numChannels = 1; // Mono filter
 
-    toneFilter.prepare(spec); // Initialize the filter with this spec
+    delayFilter.reset();
+    delayFilter.prepare(spec);// Initialize the filter with this spec
     
     reverbFilter.setSampleRate(44100);
     reverbParams.dryLevel = 1.0;
@@ -63,6 +75,7 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
     reverbParams.damping = 0.1;
     
     reverbFilter.setParameters(reverbParams);
+    
 }
 
 // Called when audio stops
@@ -92,8 +105,10 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         float dry = input[i]; // Read input sample
         float boosted = dry * gain; // Apply gain
         float clipped = std::clamp(boosted, -0.8f, 0.8f); // Hard clipping
-        // Apply tone filter
-        float output = clipped * volume; // Apply volume
+        delayFilter.pushSample(0, delay);
+        float delayed = delayFilter.popSample(0);
+        float output = delayed * volume; // Apply volume
+        
 
         left[i] = output; // Write to left output
         
