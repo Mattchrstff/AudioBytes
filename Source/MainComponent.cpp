@@ -14,12 +14,12 @@ MainComponent::MainComponent()
     addAndMakeVisible(gainLabel); // Make label visible
 
     // Configure tone slider
-    toneSlider.setRange(500.0, 20000.0, 1.0); // Hz range
+    toneSlider.setRange(0, 1.0, 0.01); // Hz range
     toneSlider.setValue(tone);
-    toneSlider.onValueChange = [this] { tone = toneSlider.getValue(); };
+    toneSlider.onValueChange = [this] { reverbParams.roomSize = toneSlider.getValue(); };
     addAndMakeVisible(toneSlider);
 
-    toneLabel.setText("Tone", juce::dontSendNotification);
+    toneLabel.setText("Reverb", juce::dontSendNotification);
     addAndMakeVisible(toneLabel);
 
     // Configure volume slider
